@@ -19,7 +19,7 @@ public class WebReader {
         String result = "";
         try {
             // Navigate to the URL
-            driver.get("https://www.ipaddressguide.com/ipv6-cidr");
+            driver.get("https://www.ipaddressguide.com/cidr");
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("form-control")));
 
@@ -51,11 +51,13 @@ public class WebReader {
             for (WebElement row : rows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 for (WebElement cell : cells) {
-                    if (rowNumber == 1) {
-                        firstIp = cell.getText();
-                    }
                     if (rowNumber == 3) {
+                        firstIp = cell.getText();
+                        System.out.println(firstIp);
+                    }
+                    if (rowNumber == 5) {
                         lastIp = cell.getText();
+                        System.out.println(lastIp);
                     }
                     rowNumber++;
                 }
